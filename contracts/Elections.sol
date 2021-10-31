@@ -1,6 +1,6 @@
-pragma solidity ^0.5.7;
+pragma solidity >=0.4.22 <0.8.0;
 
-contract Election {
+contract Elections {
     
     // model a candidate
     struct Candidate {
@@ -11,11 +11,9 @@ contract Election {
 
     // store accounts that have voted
     mapping(address => bool) public voters;
-
-    // read/write candidate
+    // read/write candidates
     mapping(uint => Candidate) public candidates;
-
-    //store Candidates Count
+    // store candidates Count
     uint public candidatesCount;
 
     // Constructor

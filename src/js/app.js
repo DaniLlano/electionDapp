@@ -55,6 +55,9 @@ App = {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
 
+      var candidatesSelect = $('#candidatesSelect');
+      candidatesSelect.empty();
+
       for (var i = 1; i <= candidatesCount; i++) {
         electionInstance.candidates(i).then(function(candidate) {
           var id = candidate[0];
@@ -64,9 +67,13 @@ App = {
           // Render candidate Result
           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
           candidatesResults.append(candidateTemplate);
+          
+          // Render candidate ballot option
+          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+          candidatesSelect.append(candidateOption);
         });
       }
-
+      
       loader.hide();
       content.show();
     }).catch(function(error) {
